@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import login from "/src/assets/login-BG.jpg"
 
 export default function Login() {
     const [formData, setFormData] = useState({
@@ -25,11 +26,11 @@ export default function Login() {
     };
 
     return (
-        <div className="flex bg-gradient-to-br from-blue-50 to-purple-50 w-full items-center justify-center min-h-screen p-4">
-            <div className="flex flex-col md:flex-row h-auto md:h-[600px] w-full max-w-4xl shadow-2xl shadow-blue-100 rounded-2xl overflow-hidden">
+        <div className="flex bg-[url('/src/assets/login-BG.jpg')] bg-cover w-full items-center justify-center min-h-screen p-4">
+            <div className="flex flex-col md:flex-row h-auto md:h-[500px]  w-full max-w-4xl shadow-xl shadow-pink-100 rounded-xl overflow-hidden">
                 
                 {/* Left Section: Banner */}
-                <div className="hidden md:flex flex-col bg-gradient-to-br from-blue-600 to-purple-600 items-center justify-center p-8 md:w-1/2">
+                <div className="hidden md:flex flex-col bg-gradient-to-br from-blue-500 to-pink-400 items-center justify-center p-8 md:w-1/2">
                     <div className="text-center text-white space-y-6">
                         <h1 className="text-5xl font-bold">Welcome Back!</h1>
                         <p className="text-lg">

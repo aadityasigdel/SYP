@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import bgimage from "/src/assets/signup-BG.jpg";
 
 export default function SignUp() {
     const [formData, setFormData] = useState({
@@ -19,8 +20,8 @@ export default function SignUp() {
     };
 
     return (
-        <div className="flex bg-gradient-to-br from-purple-50 to-pink-50 w-full items-center justify-center min-h-screen p-4">
-            <div className="flex flex-col md:flex-row h-auto md:h-[600px] w-full max-w-4xl shadow-2xl shadow-purple-100 rounded-2xl overflow-hidden">
+        <div className="flex bg-[url('/src/assets/signup-BG.jpg')] bg-cover w-full items-center justify-center min-h-screen p-4">
+            <div className="flex flex-col md:flex-row h-auto  w-full max-w-4xl shadow-md shadow-blue-200 rounded-2xl overflow-hidden">
                 {/* Left Section: Banner */}
                 <div className="hidden md:flex flex-col bg-gradient-to-br from-purple-600 to-pink-600 items-center justify-center p-8 md:w-1/2">
                     <div className="text-center text-white space-y-6">
