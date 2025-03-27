@@ -1,6 +1,6 @@
+import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import bgimage from "/src/assets/signup-BG.jpg";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignUp() {
     const [formData, setFormData] = useState({
@@ -9,19 +9,34 @@ export default function SignUp() {
         password: "",
     });
 
+    const [error, setError] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+    
+    const nav = useNavigate();
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        localStorage.setItem("userData", JSON.stringify(formData));
-        console.log("User signed up with:", formData);
+        setIsLoading(true); // Show loading indicator
+
+        try {
+            const response = await axios.post("http://localhost:5000/api/signup", formData);
+            console.log("User signed up:", response.data);
+            nav("/login"); // Redirect to login page
+        } catch (error) {
+            setError("An error occurred during signup. Please try again.");
+            console.error(error);
+        } finally {
+            setIsLoading(false); // Hide loading indicator
+        }
     };
 
     return (
         <div className="flex bg-[url('/src/assets/signup-BG.jpg')] bg-cover w-full items-center justify-center min-h-screen p-4">
-            <div className="flex flex-col md:flex-row h-auto  w-full max-w-4xl shadow-md shadow-blue-200 rounded-2xl overflow-hidden">
+            <div className="flex flex-col md:flex-row h-auto w-full max-w-4xl shadow-md shadow-blue-200 rounded-2xl overflow-hidden">
                 {/* Left Section: Banner */}
                 <div className="hidden md:flex flex-col bg-gradient-to-br from-purple-600 to-pink-600 items-center justify-center p-8 md:w-1/2">
                     <div className="text-center text-white space-y-6">
@@ -29,8 +44,7 @@ export default function SignUp() {
                             Join Us Today!
                         </h1>
                         <p className="text-lg">
-                            Sign up and be part of a community that inspires
-                            creativity and innovation. Your journey begins here.
+                            Sign up and be part of a community that inspires creativity and innovation. Your journey begins here.
                         </p>
                     </div>
                 </div>
@@ -41,6 +55,14 @@ export default function SignUp() {
                         <h2 className="text-4xl font-bold text-center text-gray-800 mb-8">
                             Sign Up
                         </h2>
+
+                        {/* Error Message */}
+                        {error && (
+                            <div className="bg-red-100 text-red-700 p-4 mb-4 rounded-lg">
+                                {error}
+                            </div>
+                        )}
+
                         <form className="space-y-6" onSubmit={handleSubmit}>
                             {/* Username Field */}
                             <div>
@@ -106,8 +128,9 @@ export default function SignUp() {
                             <button
                                 type="submit"
                                 className="w-full bg-purple-500 text-white py-3 px-4 rounded-lg hover:bg-purple-600 transition-all duration-300 transform hover:scale-105"
+                                disabled={isLoading} // Disable button when loading
                             >
-                                Sign Up
+                                {isLoading ? "Signing Up..." : "Sign Up"}
                             </button>
                         </form>
 

@@ -6,6 +6,7 @@ import compimg from "./assets/CompImg.svg";
 import Reviuser from "./assets/userpic.svg";
 import learnimg from "/src/assets/Learning.svg";
 
+
 export default function Landing() {
     return (
         <div className="min-h-screen bg-gray-950 text-white flex flex-col relative overflow-hidden">
@@ -132,6 +133,40 @@ export default function Landing() {
                                 </div>
                                 <p className="mt-4 text-gray-200">
                                     Great serviece. I love it.
+                                </p>
+                                <div className="mt-3 flex"></div>
+                            </div>
+
+                            <div className=" flex flex-col bg-gray-800 p-6 rounded-lg shadow-lg">
+                                <div className="flex  items-center space-x-4">
+                                    <img
+                                    
+                                        src={Reviuser}
+                                        className="w-24 h-24 rounded-full border-2 border-gray-600"
+                                    />
+                                    <h4 className="  text-lg font-semibold text-white">
+                                       <span className="text-gray-400">Name :</span> Alejandro Hernandez
+                                    </h4>
+                                </div>
+                                <p className="mt-4 text-gray-200 p-7">
+                                     My dedication to learning is bought me to this platform, the best descision of my ife 
+                                </p>
+                                <div className="mt-3 flex"></div>
+                            </div>
+
+                            <div className=" flex flex-col bg-gray-800 p-6 rounded-lg shadow-lg">
+                                <div className="flex  items-center space-x-4">
+                                    <img
+                                    
+                                        src={Reviuser}
+                                        className="w-24 h-24 rounded-full border-2 border-gray-600"
+                                    />
+                                    <h4 className="  text-lg font-semibold text-white">
+                                       <span className="text-gray-400">Name :</span> Ramesh kumar pandey
+                                    </h4>
+                                </div>
+                                <p className="mt-4 text-gray-200">
+                                I highly recommend this platform.
                                 </p>
                                 <div className="mt-3 flex"></div>
                             </div>
